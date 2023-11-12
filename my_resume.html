@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Resume</title>
+
+
+    <style>
+        @font-face {
+            font-family: 'My Web Font';
+            src: url('https://fonts.gstatic.com/s/gloriahallelujah/v8/CA1k7SlXcY5kvI81M_R28cNDay8z-hHR7F16xrcXsJw.woff2');
+        }
+
+        body {
+            font-family: 'My Web Font', 'Open Sans', cursive;
+            /**/
+            line-height: 1.6;
+            padding: 20px;
+            /**/
+            background-color: rgba(83, 47, 47, 0.11);
+        }
+
+
+        .cont_info {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #333;
+            color: #fff;
+        }
+
+        .intro {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .profile img {
+            max-width: 100%;
+            height: 400px;
+            object-fit: cover;
+            float: left;
+            margin-right: 20px;
+        }
+
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* Адаптивный дизайн */
+        @media screen and (max-width: 600px) {
+            .cont_info {
+                width: 100%;
+            }
+
+            .intro, .profile {
+                display: block;
+                text-align: center;
+            }
+
+            .profile img {
+                max-width: 50%;
+            }
+
+            header, footer {
+                padding: 10px 0;
+            }
+        }
+
+
+        /**/
+        /**/
+
+        .collapsible {
+            background-color: #777;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            position: relative;
+            font-family: 'My Web Font', 'Open Sans', cursive;
+
+
+        }
+
+        .collapse-icon {
+            position: absolute;
+            right: 10px;
+        }
+
+        .active, .collapsible:hover {
+            background-color: #555;
+        }
+
+        .content_collapsible {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #f1f1f1;
+        }
+
+
+        /*  timeline  */
+        .container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        /* The circles on the timeline */
+        .container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid #FF9F55;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        /* Place the container to the left */
+        .left {
+            left: 0;
+        }
+
+        /* Place the container to the right */
+        .right {
+            left: 50%;
+        }
+
+        /* Add arrows to the left container (pointing right) */
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid white;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent white;
+        }
+
+        /* Add arrows to the right container (pointing left) */
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid white;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent white transparent transparent;
+        }
+
+        /* Fix the circle for containers on the right side */
+        .right::after {
+            left: -16px;
+        }
+
+        /* The actual content */
+        .content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+        }
+
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* The actual timeline (the vertical ruler) */
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: white;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        /*    */
+        /*  skillbar  */
+        .contain_skill_bar {
+            width: 100%; /* Full width */
+            background-color: #ddd; /* Grey background */
+        }
+
+        .skills {
+            text-align: right; /* Right-align text */
+            padding-top: 10px; /* Add top padding */
+            padding-bottom: 10px; /* Add bottom padding */
+            color: white; /* White text color */
+        }
+
+        .html {
+            width: 90%;
+            background-color: #04AA6D;
+        }
+
+        .css {
+            width: 80%;
+            background-color: #2196F3;
+        }
+
+        .js {
+            width: 65%;
+            background-color: #f44336;
+        }
+
+        .php {
+            width: 60%;
+            background-color: #808080;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="cont_info">
+        <div class="intro">
+            <h1>Anton Platonov</h1>
+            <p>Web Developer</p>
+        </div>
+    </div>
+</header>
+
+<section id="about">
+    <div class="cont_info">
+        <div class="profile">
+            <img src="profile.jpg" alt="Anton Platonov">
+        </div>
+        <h2>About Me</h2>
+        <p>I come from Crimea. Now I live in Moscow. I moved to Moscow to study as a Marine Engineer. Since childhood,
+            I have been fond of technology, various types of equipment, I love movies and laughing, I play the guitar,
+            I also sing a little. He managed to work as a sailor, was in different countries, for example, India,
+            Turkey,
+            Egypt, Syria. At sea every evening after work, for the sake of interest, I began to study programming on my
+            own,
+            and I liked it, my choice fell on Python, before that we studied Pascal at school. In the fall of 2022, I
+            finally
+            realized that working at sea is cool, but I like programming more and I decided to change the type of
+            activity.
+            <br>
+            <br>
+            At the moment I am studying for a Full stack developer. There are several projects in Python, Django on my
+            github.
+            Now I have started intensive study of JS, CSS, then I plan to code on the react.
+            <br>
+            I intend to develop in this craft for the rest of my life.
+            <br>
+            <br>
+
+            My Stack: Python, Django, JS, CSS, HTML, PosrgreSQL, Celery, Reddis, WebSocket, Docker, bush Linux
+            <br>
+            <br>
+            My GitHub: <a href="github.com/pltnv123">github.com/pltnv123</a>
+        </p>
+    </div>
+</section>
+
+
+<section id="experience">
+    <div class="cont_info">
+        <h2>My Experience</h2>
+
+        <button type="button" class="collapsible">
+            <span class="collapse-icon">+</span>
+            <span class="collapse-text">Show details</span>
+        </button>
+        <div class="content_collapsible">
+            <div class="timeline">
+                <div class="container left">
+                    <div class="content">
+                        <h2>..2016</h2>
+                        <p>Study at School Lyceum of Arts</p>
+                    </div>
+                </div>
+                <div class="container right">
+                    <div class="content">
+                        <h2>2016-2019</h2>
+                        <p>Study at University Moscow State Academy of Water Transport</p>
+                    </div>
+                </div>
+                <div class="container left">
+                    <div class="content">
+                        <h2>2019-2020</h2>
+                        <p>Served in the army</p>
+                    </div>
+                </div>
+                <div class="container right">
+                    <div class="content">
+                        <h2>2020-2022</h2>
+                        <p>Worked at sea as a sailor.</p>
+                    </div>
+                </div>
+                <div class="container left">
+                    <div class="content">
+                        <h2>2022 for now </h2>
+                        <p>Learning Python, JS and others</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section id="education">
+    <div class="cont_info">
+        <h2>Education</h2>
+
+        <button type="button" class="collapsible">
+            <span class="collapse-icon">+</span>
+            <span class="collapse-text">Show details</span>
+        </button>
+        <div class="content_collapsible">
+            School
+            <br>
+            <br>
+            Incomplete higher education
+            <br>
+            <br>
+            SkillFactory courses
+            <br>
+        </div>
+    </div>
+</section>
+
+<section id="skills">
+
+    <div class="cont_info">
+        <h2>Skills</h2>
+        <button type="button" class="collapsible">
+            <span class="collapse-icon">+</span>
+            <span class="collapse-text">Show details</span>
+        </button>
+        <div class="content_collapsible">
+
+            <p>Python</p>
+            <div class="contain_skill_bar">
+                <div class="skills html">??%</div>
+            </div>
+
+            <p>HTML</p>
+            <div class="contain_skill_bar">
+                <div class="skills css">??%</div>
+            </div>
+
+            <p>JavaScript</p>
+            <div class="contain_skill_bar">
+                <div class="skills js">??%</div>
+            </div>
+
+            <p>CSS</p>
+            <div class="contain_skill_bar">
+                <div class="skills php">??%</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="cont_info">
+        <p>Email: a.v.pltnv@gmail.com</p>
+        <p>Phone: +7-901-788-02-99</p>
+    </div>
+</footer>
+
+
+<script>
+    let coll = document.getElementsByClassName("collapsible");
+    let i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            let content = this.nextElementSibling;
+            let icon = this.querySelector('.collapse-icon');
+            let text = this.querySelector('.collapse-text');
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                icon.textContent = "+";
+                text.textContent = "Show details";
+            } else {
+                content.style.display = "block";
+                icon.textContent = "-";
+                text.textContent = "Hide details";
+            }
+        });
+    }
+
+</script>
+</body>
+</html>
